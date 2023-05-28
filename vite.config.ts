@@ -6,7 +6,7 @@ import * as path from "path";
 export default defineConfig({
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '/src')
+      '@': 'src', // I changed it because it did not work on my machine, change back if needed
     }
   },
   plugins: [react()]

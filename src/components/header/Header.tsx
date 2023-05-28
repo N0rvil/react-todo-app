@@ -1,11 +1,9 @@
 import React, { useContext } from 'react'
 import { AppBar, IconButton, Stack, Toolbar, Typography, useTheme } from '@mui/material'
-import BuildIcon from '@mui/icons-material/Build'
 import { useAppDispatch } from '@/redux/store'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
-import { useNavigate } from 'react-router-dom'
-import { AccountCircle } from '@mui/icons-material'
+import { useNavigate, Link } from 'react-router-dom'
 import { ThemeSwitchContext } from '@/theme/theme'
 
 export const Header = () => {
@@ -13,6 +11,10 @@ export const Header = () => {
     const dispatch = useAppDispatch()
     const { toggleColorMode } = useContext(ThemeSwitchContext)
     const navigate = useNavigate()
+    const linkStyle = {
+        textDecoration: 'none',
+        color: '#FFF',
+    }
     return (
         <AppBar position="static">
             <Toolbar
@@ -22,9 +24,15 @@ export const Header = () => {
                 }}
             >
                 <Stack direction={`row`} spacing={3} alignItems={`center`}>
-                    <BuildIcon />
                     <Typography variant={'h6'} component={'div'}>
-                        Hello appbar
+                        <Link to={'/'} style={linkStyle}>
+                            Dashboard
+                        </Link>
+                    </Typography>
+                    <Typography variant={'h6'} component={'div'}>
+                        <Link to={'/pokemon'} style={linkStyle}>
+                            Pokemons
+                        </Link>
                     </Typography>
                     <IconButton
                         size="large"
@@ -33,9 +41,7 @@ export const Header = () => {
                         aria-haspopup="true"
                         color="inherit"
                         onClick={() => navigate('/sign-in')}
-                    >
-                        <AccountCircle />
-                    </IconButton>
+                    ></IconButton>
                 </Stack>
                 {themeMaterial.palette.mode} mode
                 <IconButton sx={{ ml: 1 }} onClick={toggleColorMode} color="inherit">

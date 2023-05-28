@@ -1,7 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit'
+import { todoReducer } from './reducers/todoReducer'
 
 export const rootReducer = combineReducers({
-    //your TODO should go here
+    todoList: todoReducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>
